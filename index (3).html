@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lerato Motloung | Data Engineer</title>
+<style>
+:root{--bg:#eaf4ff;--navy:#0b2a4a;--deep:#1d4f91;--mid:#3b82c4;--sky:#6fb3e8;--soft:#b9dcf7;--pale:#d4e8fa;--text:#2b4560}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;display:flex;flex-direction:column;background:linear-gradient(180deg,#eaf4ff 0%,#dcecfb 100%);color:var(--text);font-family:"Segoe UI",system-ui,Helvetica,Arial,sans-serif;line-height:1.7}
+a{color:var(--deep)}
+nav{position:sticky;top:0;z-index:10;background:rgba(234,244,255,.92);backdrop-filter:blur(6px);border-bottom:1px solid var(--pale)}
+nav .in{max-width:1150px;margin:0 auto;padding:.9rem 1.2rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.5rem}
+.logo{font-weight:800;font-size:1.5rem;color:var(--navy);text-decoration:none}
+.logo span{color:var(--mid)}
+nav ul{display:flex;gap:1.5rem;list-style:none;margin:0;padding:0;flex-wrap:wrap}
+nav ul a{text-decoration:none;font-weight:600;color:var(--navy);padding:.2rem 0;border-bottom:2px solid transparent}
+nav ul a:hover,nav ul a.on{border-color:var(--mid);color:var(--deep)}
+main{flex:1;width:100%;max-width:1150px;margin:0 auto;padding:2.5rem 1.2rem}
+.tab{display:none;animation:f .35s ease}
+.tab.on{display:block}
+@keyframes f{from{opacity:0;transform:translateY(8px)}to{opacity:1}}
+.eyebrow{text-align:center;letter-spacing:.25em;font-size:.78rem;font-weight:700;color:var(--mid);text-transform:uppercase;margin:1rem 0 .3rem}
+h2{text-align:center;font-size:clamp(1.9rem,4vw,2.5rem);color:var(--navy);margin:0 0 1rem}
+.lead{max-width:720px;margin:0 auto 1.5rem;text-align:center;font-size:1.1rem}
+/* hero */
+.hero{display:grid;grid-template-columns:1.1fr 1fr;gap:2rem;align-items:center;min-height:70vh}
+.hero .eyebrow{text-align:left}
+.hero h1{font-size:clamp(2.6rem,6vw,4.2rem);line-height:1.1;margin:.2rem 0;color:var(--navy)}
+.hero h1 em{font-style:normal;color:var(--deep)}
+.role{font-size:1.6rem;font-weight:700;color:var(--mid);margin:.8rem 0}
+.hero p.d{max-width:520px;font-size:1.08rem}
+.btns{display:flex;gap:.9rem;flex-wrap:wrap;margin-top:1.4rem}
+.center{justify-content:center}
+.btn{display:inline-block;padding:.8rem 1.6rem;border-radius:999px;background:var(--mid);color:#fff;text-decoration:none;font-weight:700;border:2px solid var(--mid);cursor:pointer;font-size:1rem}
+.btn:hover{background:var(--deep);border-color:var(--deep)}
+.btn.alt{background:transparent;color:var(--deep);border-color:var(--deep)}
+.btn.alt:hover{background:var(--deep);color:#fff}
+.hex{clip-path:polygon(50% 0,100% 25%,100% 75%,50% 100%,0 75%,0 25%)}
+.cluster{position:relative;width:100%;max-width:560px;aspect-ratio:1/1.08;margin:0 auto}
+.cluster>div{position:absolute;aspect-ratio:1/1.1547}
+.c1{width:30%;left:0;top:4%;background:var(--sky);opacity:.85}
+.c2{width:30%;right:0;top:0;background:linear-gradient(160deg,#4a7fd4,#2a58b8);opacity:.9}
+.c3{width:30%;left:0;bottom:2%;background:var(--soft);opacity:.7}
+.c4{width:30%;right:1%;bottom:0;background:var(--pale);opacity:.9}
+.c0{width:74%;left:13%;top:10%;background:linear-gradient(150deg,#1d6fd0,#0b3f91);z-index:2;filter:drop-shadow(0 10px 18px rgba(11,42,74,.3))}
+.c0 .ph{position:absolute;inset:7px;background:var(--pale);overflow:hidden;display:flex;align-items:center;justify-content:center;font-size:3.5rem;font-weight:800;color:var(--deep)}
+.c0 img{width:100%;height:100%;object-fit:cover;display:block}
+/* project hexes */
+#grid{display:flex;flex-direction:column;align-items:center;margin-top:2rem}
+.row{display:flex;justify-content:flex-start;width:var(--rw)}
+.row.odd{padding-left:var(--half)}
+.row+.row{margin-top:var(--pull)}
+.cell{width:var(--w);height:calc(var(--w)*1.1547);margin:0 var(--gap);display:block;color:#fff;text-decoration:none;filter:drop-shadow(0 6px 10px rgba(11,42,74,.22));transition:transform .2s}
+.cell:hover{transform:translateY(-8px) scale(1.04);z-index:2}
+.face{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 17%}
+.face h3{margin:0 0 .4rem;font-size:1.2rem;line-height:1.2}
+.face p{margin:0;font-size:.86rem;line-height:1.35;opacity:.92}
+.face small{margin-top:.6rem;font-size:.72rem;letter-spacing:.05em;font-weight:700;opacity:.85}
+/* cards */
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.2rem;margin-top:1.5rem}
+.card{background:rgba(255,255,255,.7);border-bottom:4px solid var(--mid);border-radius:14px;padding:1.3rem;box-shadow:0 4px 14px rgba(29,79,145,.12)}
+.card h3{margin:0 0 .3rem;color:var(--navy)}
+.card small{color:var(--mid);font-weight:700}
+.more{text-align:center;margin-top:.8rem}
+.sub{text-align:center;color:var(--navy);margin:2.2rem 0 0;font-size:1.4rem}
+.note{text-align:center;opacity:.7;font-size:.9rem;margin-top:1.5rem}
+footer{text-align:center;padding:1.5rem;color:var(--deep);font-size:.92rem}
+footer a{margin:0 .5rem;font-weight:600}
+@media(max-width:800px){.hero{grid-template-columns:1fr;text-align:center}.hero .eyebrow{text-align:center}.hero p.d{margin:0 auto}.hero .btns{justify-content:center}.cluster{max-width:380px;order:-1}nav ul{gap:1rem;font-size:.9rem}}
+</style>
+</head>
+<body>
+<nav><div class="in">
+  <a class="logo" href="#home">LM<span>.</span></a>
+  <ul>
+    <li><a href="#home">Home</a></li><li><a href="#about">About</a></li><li><a href="#projects">Projects</a></li>
+    <li><a href="#experience">Experience</a></li><li><a href="#certifications">Certifications</a></li><li><a href="#contact">Contact</a></li>
+  </ul>
+</div></nav>
+
+<main>
+<section id="home" class="tab">
+  <div class="hero">
+    <div>
+      <div class="eyebrow">Welcome to my portfolio</div>
+      <h1>Hello, I'm <em>Lerato.</em></h1>
+      <div class="role">Data Engineer</div>
+      <p class="d">I build data solutions that transform raw information into meaningful insights. My work brings together databases, programming, analytics and cloud technologies.</p>
+      <div class="btns">
+        <a class="btn" href="#projects">Explore My Work</a>
+        <a class="btn alt" href="#contact">Get In Touch</a>
+      </div>
+    </div>
+    <div class="cluster">
+      <div class="hex c1"></div><div class="hex c2"></div><div class="hex c3"></div><div class="hex c4"></div>
+      <div class="hex c0"><div class="hex ph"><img src="profile.png" alt="Lerato Motloung" onerror="var p=this.parentNode;this.remove();p.textContent='LM'"></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="about" class="tab">
+  <div class="eyebrow">Get to know me</div><h2>About Me</h2>
+  <p class="lead">I am an aspiring Data Engineer with a background in accounting, data analytics and collaborative technology programmes. I enjoy working with data, building practical solutions and continuously expanding my skills.</p>
+  <div class="btns center">
+    <a class="btn" href="https://github.com/BeaddahEmpress" target="_blank" rel="noopener">GitHub</a>
+    <a class="btn alt" href="https://www.linkedin.com/in/lerato-motloung-79157918b/" target="_blank" rel="noopener">LinkedIn</a>
+  </div>
+</section>
+
+<section id="projects" class="tab">
+  <div class="eyebrow">What I've been building</div><h2>Featured Projects</h2>
+  <div id="grid"></div>
+  <p class="note">Click a hexagon to see the project on GitHub.</p>
+  <p class="more"><a class="btn alt" href="https://github.com/BeaddahEmpress?tab=repositories" target="_blank" rel="noopener">Click to see more projects</a></p>
+</section>
+
+<section id="experience" class="tab">
+  <div class="eyebrow">My professional journey</div><h2>Experience &amp; Leadership</h2>
+  <p class="lead">My experience combines financial administration, data-focused learning, regional representation, teamwork and community leadership.</p>
+  <div class="cards" id="exp"></div>
+</section>
+
+<section id="certifications" class="tab">
+  <div class="eyebrow">Continuous learning</div><h2>Certifications &amp; Learning</h2>
+  <p class="lead">A growing collection of technical training, professional development and cloud learning.</p>
+  <h3 class="sub">Certifications</h3>
+  <div class="cards" id="certs"></div>
+  <h3 class="sub">Courses &amp; Training</h3>
+  <div class="cards" id="training"></div>
+</section>
+
+<section id="contact" class="tab">
+  <div class="eyebrow">Let's connect</div><h2>Let's Build Something Meaningful.</h2>
+  <p class="lead">Interested in data engineering, collaboration or meaningful technology projects? I'd love to connect.</p>
+  <div class="btns center">
+    <a class="btn" href="mailto:YOUR_EMAIL@example.com">Email Me</a>
+    <a class="btn alt" href="https://www.linkedin.com/in/lerato-motloung-79157918b/" target="_blank" rel="noopener">LinkedIn</a>
+    <a class="btn alt" href="https://github.com/BeaddahEmpress" target="_blank" rel="noopener">GitHub</a>
+  </div>
+</section>
+</main>
+
+<footer>© Lerato Motloung 2026 ·
+  <a href="https://github.com/BeaddahEmpress" target="_blank" rel="noopener">GitHub</a>
+  <a href="https://www.linkedin.com/in/lerato-motloung-79157918b/" target="_blank" rel="noopener">LinkedIn</a>
+</footer>
+
+<script>
+// ===== EDIT YOUR CONTENT HERE =====
+const G="https://github.com/BeaddahEmpress";
+const projects=[
+ {title:"Fintech Expense Tracker",desc:"A data-driven application for tracking and analysing financial transactions.",tag:"Python · Supabase · Streamlit",url:"https://github.com/BeaddahEmpress/Fintech-expense-tracker/tree/main"},
+ {title:"South African Insurance Claims Analytics",desc:"An analytical project exploring insurance claims and regional patterns.",tag:"Python · SQL · PostgreSQL",url:"https://github.com/BeaddahEmpress/South-African-Insurance-Claims-Analytics"},
+ {title:"Small Business Loan Risk Analysis",desc:"Exploring business loan data, repayment patterns and potential risk indicators.",tag:"Python · Pandas · SQL",url:"https://github.com/BeaddahEmpress/South-African-Small-Business-Loan-Risk-Analytics"}
+];
+const experience=[
+ {title:"Southern Africa Regional Representative & Class Representative",meta:"Tech4Dev – Women Techsters Fellowship · Class of 2026",text:"Represented fellows at class and regional level, linking participants with programme leadership. Started a Tech Talk initiative that connects the cohort with technology professionals."},
+ {title:"Volunteer Facilitator",meta:"Effective Altruism South Africa · 2025",text:"Facilitated learning and discussion spaces for the 2025 Introductory Fellowship (Q3 and Q4), encouraging critical thinking and informed decision-making."},
+ {title:"Assistant Analyst",meta:"Ramathe & Associates (CA)SA · Aug 2021 – Jan 2025",text:"Reviewed and captured client financial documents, verified records for accuracy, and used Excel to organise data and build basic visuals for weekly reporting on 2–5 accounts."}
+];
+const certs=[
+ {title:"Associate Data Engineer",meta:"DataCamp · 2026"}
+];
+const training=[
+ {title:"Women Techsters Fellowship",meta:"Tech4Dev · Class of 2026"},
+ {title:"CloudHer Mentorship – Cohort 1",meta:"WIICA · 2026"}
+];
+// ==================================
+const shades=["#0b2a4a","#1d4f91","#3b82c4","#2a68ab","#14406f","#4a90d0"];
+function cards(id,list){document.getElementById(id).innerHTML=list.map(i=>`<div class="card"><h3>${i.title}</h3><small>${i.meta}</small>${i.text?`<p>${i.text}</p>`:''}</div>`).join("")}
+cards("exp",experience);cards("certs",certs);cards("training",training);
+
+const grid=document.getElementById("grid");
+function build(){
+  if(!grid.offsetParent&&!grid.parentElement.classList.contains("on"))return;
+  const gap=5,avail=Math.min(grid.parentElement.clientWidth,1100);
+  const w=avail<640?Math.floor(avail/2)-gap*2-4:290;
+  let per=Math.max(1,Math.floor((avail-w/2)/(w+gap*2)));per=Math.min(per,projects.length);const multi=projects.length>per;
+  grid.style.setProperty("--w",w+"px");grid.style.setProperty("--gap",gap+"px");
+  grid.style.setProperty("--half",(w/2+gap)+"px");
+  grid.style.setProperty("--rw",(per*(w+gap*2)+(multi?w/2+gap:0))+"px");
+  grid.style.setProperty("--pull",(-w*0.2887+6)+"px");
+  grid.innerHTML="";
+  for(let i=0,r=0;i<projects.length;i+=per,r++){
+    const row=document.createElement("div");row.className="row"+(r%2?" odd":"");
+    projects.slice(i,i+per).forEach((p,j)=>{
+      const a=document.createElement("a");a.className="cell hex";a.href=p.url;a.target="_blank";a.rel="noopener";
+      a.innerHTML='<div class="face hex" style="background:'+shades[(i+j)%shades.length]+'"><h3></h3><p></p><small></small></div>';
+      a.querySelector("h3").textContent=p.title;a.querySelector("p").textContent=p.desc;a.querySelector("small").textContent=p.tag;
+      row.appendChild(a);
+    });
+    grid.appendChild(row);
+  }
+}
+const ids=["home","about","projects","experience","certifications","contact"];
+function show(){
+  const h=(location.hash||"#home").slice(1);const id=ids.includes(h)?h:"home";
+  ids.forEach(t=>document.getElementById(t).classList.toggle("on",t===id));
+  document.querySelectorAll("nav ul a").forEach(a=>a.classList.toggle("on",a.getAttribute("href")==="#"+id));
+  if(id==="projects")build();
+  scrollTo(0,0);
+}
+addEventListener("hashchange",show);
+let t;addEventListener("resize",()=>{clearTimeout(t);t=setTimeout(build,150)});
+show();
+</script>
+</body>
+</html>
